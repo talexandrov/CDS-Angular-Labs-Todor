@@ -13,11 +13,6 @@ export class TodoListComponent {
     this.todos = this._todoServesService.getTodos();
   }
 
-  removeTodo(index){
-    this._todoServesService.removeTodo(index)
-  }
-
-
   toggleComplete(id){
     // console.log('>>> toggleComplete is active <<<');
     this.todos[id-1].complete = !this.todos[id-1].complete;

@@ -7,7 +7,12 @@ div{
 .fa-trash{
 	color:#911156;
 }
-.btnDlete{
+.btnEdit{
+	position: absolute;
+	bottom:0; right: 40px;
+}
+.btnDelete{
 	position: absolute;
 	bottom:0; right: 20px;
 }
+

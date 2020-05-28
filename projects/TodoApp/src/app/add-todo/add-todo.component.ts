@@ -7,24 +7,15 @@ import { TodoServesService } from "../todo-serves.service";
   templateUrl: './add-todo.component.html',
   styleUrls: ['./add-todo.component.css']
 })
-
 export class AddTodoComponent {
-  constructor(private _todoServesService:TodoServesService){
+  // @Output() addTodo = new EventEmitter();
 
+  TodoText;
+
+  constructor(private _todoServe:TodoServesService){}
+
+  addTodo(TodoText){
+    this._todoServe.addTodo(TodoText);
   }
 
-  // (keyup)="addTodo($event)"
-  // (click)="addTodo(newTodo.value)"
-  addTodo(param){
-    console.log(typeof(param))
-
-    // // if event is keyup:
-    // if(typeof(param) === 'string'){
-    //   this._todoServesService.addTodo(param);
-    // } else if(param.keyCode === 13){
-    //   this._todoServesService.addTodo(param.target.value)
-    // }
-
-    this._todoServesService.addTodo(param);
-  }
 }

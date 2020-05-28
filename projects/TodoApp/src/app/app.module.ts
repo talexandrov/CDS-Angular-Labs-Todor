@@ -16,6 +16,8 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { TodoDetailsComponent } from './todo-details/todo-details.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

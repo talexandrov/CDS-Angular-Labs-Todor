@@ -5,9 +5,8 @@
 			>
 
 			<app-todo-item
-				[todoParentProp]="todo.name"
-				[todoIndex]="i"
-				(click)="removeTodo($event)">
+				[itemName]="todo.name"
+				[todoIndex]="i">
 			</app-todo-item>
 
 		</li>
