@@ -17,6 +17,7 @@ import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { TodosComponent } from './todos/todos.component';
 
 
 @NgModule({
@@ -35,11 +36,13 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
     ParentComponent,
     ChildComponent,
     TodoDetailsComponent,
+    TodosComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TodosComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

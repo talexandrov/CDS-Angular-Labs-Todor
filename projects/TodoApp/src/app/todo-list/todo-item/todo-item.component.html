@@ -2,7 +2,7 @@
 <div>
 	<span>{{todoName}}</span>
 	<span class="btnEdit">
-		<a [routerLink]="['/todo/',todo.id]"><i class="fas fa-pencil-alt"></i></a>
+		<a [routerLink]="['/todo/',todoIndex]" routerLinkActive="activeLink"><i class="fas fa-pencil-alt"></i></a>
 	</span>
 	<span  class="btnDelete" (click)="removeTodo(todoIndex)">
 		<i class="fas fa-trash"></i>

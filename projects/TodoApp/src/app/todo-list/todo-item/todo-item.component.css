@@ -14,5 +14,7 @@ div{
 .btnDelete{
 	position: absolute;
 	bottom:0; right: 20px;
+} 
+.activeLink{
+	color: red;
 }
-
