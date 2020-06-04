@@ -19,6 +19,7 @@ import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { TodosComponent } from './todos/todos.component';
 
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TodosComponent } from './todos/todos.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

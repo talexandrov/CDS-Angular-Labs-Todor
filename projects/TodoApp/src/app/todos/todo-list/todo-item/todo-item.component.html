@@ -1,6 +1,7 @@
 
 <div>
-	<span>{{todoName}}</span>
+	<!-- <span>{{todoName}}</span> -->
+	<span (click)="toggleComplete(todoIndex)">{{todoName}}</span>
 	<span class="btnEdit">
 		<a [routerLink]="['/todo/',todoIndex]" routerLinkActive="activeLink"><i class="fas fa-pencil-alt"></i></a>
 	</span>

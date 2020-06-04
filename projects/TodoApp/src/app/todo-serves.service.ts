@@ -1,28 +1,35 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+// http://my-json-server.typicode.com/talexandrov/json-fake-server/todos
+
+export interface TodoInterface {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
 
 @Injectable({
   'providedIn':'root'
 })
 export class TodoServesService {
-  todos = [
-    {
-      'id':1,
-      'name': 'todo1',
-      'complete': false
-    },
-    {
-      'id':2,
-      'name': 'todo2',
-      'complete': true
-    },
-    {
-      'id':4,
-      'name': 'todo3',
-      'complete': false
-    },
-  ]
+  constructor(private http:HttpClient) {
+    this.fetchTodos();
+  }
 
-  constructor() { }
+  todos: TodoInterface[] = [];
+  todosURL = "http://my-json-server.typicode.com/talexandrov/json-fake-server/todos";
+
+  fetchTodos(){
+    this.http.get<TodoInterface[]>(this.todosURL).subscribe(
+      data => {data.forEach(element => this.todos.push(element))
+      });
+  }
+
+  initTodos(todoList: TodoInterface[]) {
+    this.todos = todoList;
+  }
 
   getTodos(){
     return this.todos;
@@ -32,13 +39,18 @@ export class TodoServesService {
     this.todos.splice(index,1);
   }
 
-  addTodo(todoTitle){
+  addTodo(todoTitle: string){
     let lastID = this.todos.length;
 
     this.todos.push({
+      'userId': 1,
       'id': lastID+1,
-      'name': todoTitle,
-      'complete': false
+      'title': todoTitle,
+      'completed': false
     });
+  }
+  
+  toggleComplete(index){
+    this.todos[index].completed = !this.todos[index].completed;
   }
 }
