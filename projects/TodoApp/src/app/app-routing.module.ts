@@ -14,7 +14,8 @@ const routes: Routes = [
   },
   { 
     path: 'todo/:id', 
-    component: TodoDetailsComponent },
+    component: TodoDetailsComponent 
+  },
 ];
 
 @NgModule({

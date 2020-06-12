@@ -1,6 +1,6 @@
-import { Component, OnInit} from '@angular/core';
-import {TodoServesService} from '../../todo-serves.service'
-import {TodoInterface} from '../../todo-serves.service'
+import { Component, Input, Output, EventEmitter} from '@angular/core';
+import {TodoServesService} from '../../todo-serves.service';
+import {Todo} from '../../todo';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,12 +8,32 @@ import {TodoInterface} from '../../todo-serves.service'
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent {
-  todos: TodoInterface[] = [];
+
+  @Input("todosData") todos;
+  @Output() listRefresh = new EventEmitter();
 
   constructor(private _todoServesService:TodoServesService){
-    this._todoServesService.initTodos(this.todos);
+    
   }
 
+  addTodo (todoTitle){
+
+  }
+
+  refreshList (id:number){
+    var index =  this.todos.findIndex(x => x.id===id);
+    console.log(index);
+    
+    this.todos.splice (index,1);
+    this.listRefresh.emit(this.todos);
+  }
+
+  ngOnInit(){
+    this._todoServesService.fetchTodos().subscribe ({
+      next: data => this.todos = data,
+      error: msg => console.log(msg)
+    });
+  }
   // toggleComplete(id){
   //   console.log('>>> toggleComplete is active <<<');
   //   this.todos[id-1].complete = !this.todos[id-1].complete;

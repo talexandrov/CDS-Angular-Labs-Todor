@@ -1,2 +1,2 @@
 <app-add-todo></app-add-todo>
-<app-todo-list></app-todo-list>
+<app-todo-list [todosData]="todos" (listRefresh)="refreshList($event)"></app-todo-list>

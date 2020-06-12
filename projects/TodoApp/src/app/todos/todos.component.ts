@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TodoServesService} from '../todo-serves.service';
+import {Todo} from '../todo';
 
 @Component({
   selector: 'app-todos',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
 
-  constructor() { }
+  todos:Todo[] = [];
+
+  constructor(private _todoServesService:TodoServesService) { }
 
   ngOnInit(): void {
   }
 
+  addTodo(todo:Todo){
+    this.todos = [...this.todos, todo];
+  }
+
+  refreshList(todosList) {
+    this.todos = todosList;
+  }
 }

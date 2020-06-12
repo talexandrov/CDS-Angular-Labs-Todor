@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoServesService } from 'src/app/todo-serves.service';
+import { Todo } from '../../../todo';
 
 @Component({
   selector: 'app-todo-item',
@@ -7,16 +8,17 @@ import { TodoServesService } from 'src/app/todo-serves.service';
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent {
-  @Input('itemName') todoName;
+  @Input() todo:Todo;
   @Input() todoIndex;
-  index: number;
-
+  @Output() refreshList = new EventEmitter();
   constructor(private _todoServes: TodoServesService){}
 
-  removeTodo(index){
-    this._todoServes.removeTodo(index);
+  removeTodo(id:number){
+    this._todoServes.removeTodo(id).subscribe();
+    this.refreshList.emit(id);
   }
-  toggleComplete(idx){
-    this._todoServes.toggleComplete(idx);
+  toggleComplete(){
+    this.todo.completed = !this.todo.completed;
+    this._todoServes.toggleComplete(this.todo).subscribe();
   }
 }

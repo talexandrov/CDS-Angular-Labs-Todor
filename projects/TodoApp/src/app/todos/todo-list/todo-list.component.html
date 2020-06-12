@@ -2,14 +2,12 @@
 	<ul>
 		<li *ngFor="let todo of todos; index as i"
 			[class.completed] = "todo.completed">
-
 			<app-todo-item
-				[itemName]="todo.title"
-				[todoIndex]="i">
+				[todo]="todo"
+				[todoIndex]="i"
+				(refreshList)="refreshList($event)">
 			</app-todo-item>
-
 		</li>
-
 	</ul>
 </div>
 <ng-template #noTodos>
